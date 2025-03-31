@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExchangeRateModels\ExchangeRate.Data.csproj" />
+    <ProjectReference Include="..\ExchangeRate.Data\ExchangeRate.Data.csproj" />
   </ItemGroup>
 
 </Project>
