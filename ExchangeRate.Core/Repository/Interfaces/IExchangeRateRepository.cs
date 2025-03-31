@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExchangeRate.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace ExchangeRate.Core.Repository.Interfaces
 {
     public interface  IExchangeRateRepository
     {
-        Task<List<ExchangeRateModel>> GetAllRatesAsync();
+        Task<List<ExchangeRateModle>> GetAllRatesAsync();
+        Task<ExchangeRateModle?> GetRateByPairAsync(string pairName);
     }
 }

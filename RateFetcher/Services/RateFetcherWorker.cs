@@ -8,7 +8,7 @@ namespace RateFetcher.Services
     {
         private readonly ILogger<RateFetcherWorker> _logger;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "exchange_rates.json");
+        private readonly string _filePath = Path.Combine(Path.GetTempPath(), "exchange_rates.json");
 
         public RateFetcherWorker(ILogger<RateFetcherWorker> logger, IHttpClientFactory httpClientFactory)
         {

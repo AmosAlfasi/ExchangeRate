@@ -1,3 +1,5 @@
+using ExchangeRate.Core.Repository;
+using ExchangeRate.Core.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExchangeRate.Controllers
@@ -12,15 +14,18 @@ namespace ExchangeRate.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IExchangeRateRepository _exchangeRateRepository;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IExchangeRateRepository exchangeRateRepository)
         {
             _logger = logger;
+            _exchangeRateRepository = exchangeRateRepository;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IEnumerable<WeatherForecast>>Get()
         {
+            var t = await _exchangeRateRepository.GetAllRatesAsync();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
