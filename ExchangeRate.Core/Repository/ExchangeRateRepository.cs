@@ -56,14 +56,14 @@ namespace ExchangeRate.Core.Repository
                 {
                     foreach (var element in root.EnumerateArray())
                     {
-                        if (element.TryGetProperty("PairName", out var nameProp) &&
+                        if (element.TryGetProperty(nameof(ExchangeRateModle.PairName), out var nameProp) &&
                             nameProp.GetString()?.Equals(pairName, StringComparison.OrdinalIgnoreCase) == true)
                         {
                             return new ExchangeRateModle
                             {
                                 PairName = nameProp.GetString()!,
-                                Rate = element.GetProperty("Rate").GetDecimal(),
-                                LastUpdated = element.GetProperty("LastUpdateTime").GetDateTime()
+                                Rate = element.GetProperty(nameof(ExchangeRateModle.Rate)).GetDecimal(),
+                                LastUpdated = element.GetProperty(nameof(ExchangeRateModle.LastUpdated)).GetDateTime()
                             };
                         }
                     }
