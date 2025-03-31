@@ -15,4 +15,8 @@
   <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExchangeRateModels\ExchangeRateModels.csproj" />
+  </ItemGroup>
 </Project>
