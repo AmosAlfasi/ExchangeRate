@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangeRateModels.Models
+namespace ExchangeRate.Data.Models
 {
     public class FxApiResponse
     {

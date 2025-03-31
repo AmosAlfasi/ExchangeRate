@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExchangeRateModels\ExchangeRateModels.csproj" />
+    <ProjectReference Include="..\ExchangeRateModels\ExchangeRate.Data.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-﻿using ExchangeRateModels.Models;
+﻿using ExchangeRate.Data.Models;
+
 using System.Text.Json;
 
 namespace RateFetcher.Services
@@ -35,7 +36,7 @@ namespace RateFetcher.Services
             }
         
         }
-        private async Task<List<ExchangeRate>> FetchExchangeRatesAsync()
+        private async Task<List<ExchangeRateModle>> FetchExchangeRatesAsync()
         {
             //string responseJson = @"{
             //""success"": true,
@@ -50,7 +51,7 @@ namespace RateFetcher.Services
             //    ""USD"": 0.268297159
             //}
             //  }";
-            List<ExchangeRate> res = new();
+            List<ExchangeRateModle> res = new();
             try
             {
                 _logger.LogInformation("Fetching exchange rates...");
@@ -81,7 +82,7 @@ namespace RateFetcher.Services
 
                                 if (!res.Any(e => e.PairName == pairName))
                                 {
-                                    res.Add(new ExchangeRate
+                                    res.Add(new ExchangeRateModle
                                     {
                                         PairName = pairName,
                                         Rate = rate.Value,
@@ -116,7 +117,7 @@ namespace RateFetcher.Services
                 return res;
             }
         }
-        private async Task SaveExchangeRatesToFileAsync(List<ExchangeRate> exchangeRates, CancellationToken stoppingToken)
+        private async Task SaveExchangeRatesToFileAsync(List<ExchangeRateModle> exchangeRates, CancellationToken stoppingToken)
         {
             try
             {
@@ -125,13 +126,13 @@ namespace RateFetcher.Services
                 {
                     Directory.CreateDirectory(directoryPath);
                 }
-                List<ExchangeRate> existingRates = new();
+                List<ExchangeRateModle> existingRates = new();
                 if (File.Exists(_filePath))
                 {
                     var existingJson = await File.ReadAllTextAsync(_filePath, stoppingToken);
                     if (!string.IsNullOrWhiteSpace(existingJson))
                     {
-                        existingRates = JsonSerializer.Deserialize<List<ExchangeRate>>(existingJson) ?? new List<ExchangeRate>();
+                        existingRates = JsonSerializer.Deserialize<List<ExchangeRateModle>>(existingJson) ?? new List<ExchangeRateModle>();
                     }
                 }
                 var updatedRates = existingRates
