@@ -31,9 +31,9 @@ namespace RateFetcher.Services
                         await SaveExchangeRatesToFileAsync(exchangeRates, stoppingToken);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    _logger.LogError(ex, "Error Execute RateFetcherWorker");
                     throw;
                 }
                 await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
