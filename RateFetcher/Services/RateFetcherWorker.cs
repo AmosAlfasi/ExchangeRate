@@ -38,19 +38,7 @@ namespace RateFetcher.Services
         }
         private async Task<List<ExchangeRateModle>> FetchExchangeRatesAsync()
         {
-            //string responseJson = @"{
-            //""success"": true,
-            //""terms"": ""https://fxratesapi.com/legal/terms-conditions"",
-            //""privacy"": ""https://fxratesapi.com/legal/privacy-policy"",
-            //""timestamp"": 1743446100,
-            //""date"": ""2025-03-31T18:35:00.000Z"",
-            //""base"": ""ILS"",
-            //""rates"": {
-            //    ""EUR"": 0.248083695,
-            //    ""GBP"": 0.207849845,
-            //    ""USD"": 0.268297159
-            //}
-            //  }";
+           
             List<ExchangeRateModle> res = new();
             try
             {
@@ -65,6 +53,7 @@ namespace RateFetcher.Services
 
                 foreach (var (baseCurrency, url) in urls)
                 {
+                    //TODO Multithreading
                     try
                     {
                         var response = await client.GetStringAsync(url);
