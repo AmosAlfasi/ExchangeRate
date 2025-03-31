@@ -4,6 +4,10 @@ This project consists of two services:
 
 1. **RateFetcher**: A background worker that fetches real-time exchange rates and saves them to a file.
 2. **ExchangeRateApi**: A REST API that exposes endpoints to retrieve the latest exchange rates.
+   
+## Endpoints
+### **GET** /api/rate   
+### **GET** /api/rate/{pairName}
 
 ## How to Run the Project
 
@@ -21,5 +25,16 @@ This project consists of two services:
 1. Open a **Command Prompt** or **PowerShell** window.
 2. Navigate to the `RateFetcher` project directory and run:
 
-   ```bash
+   ```
    dotnet run
+3. Open another window and run the ExchangeRateApi:
+   ```
+   dotnet run
+
+#### Option 2: Run in a Single Window
+
+   ```
+   start dotnet run --project Path\To\RateFetcher
+   start dotnet run --project Path\To\ExchangeRateApi
+   ```
+# Enjoy :)
